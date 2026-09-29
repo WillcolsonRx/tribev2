@@ -21,6 +21,20 @@ video export — no Jupyter required.
 - ⬇️ **Download raw predictions** as `.npy` (`n_timesteps × n_vertices` on the
   fsaverage5 mesh).
 
+## Screenshots
+
+UI walkthrough (captured on a GPU-less machine with **synthetic predictions**;
+the layout and brain-surface rendering — real fsaverage5 mesh via the Nilearn
+backend — are identical when running the actual model):
+
+| Landing | Inference results |
+| --- | --- |
+| ![Landing page](docs/demo-landing.png) | ![Results](docs/demo-results.png) |
+
+| Per-timestep cortical maps (slider) | Downloads & animation export |
+| --- | --- |
+| ![Brain maps](docs/demo-brainmap.png) | ![Download](docs/demo-download.png) |
+
 ## Quick start
 
 From the repository root:

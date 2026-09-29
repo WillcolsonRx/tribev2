@@ -96,12 +96,17 @@ with st.sidebar:
             else:
                 st.success("Model loaded ✅")
 
-    import torch
+    try:
+        import torch
 
-    st.caption(
-        "Compute device: "
-        + ("GPU (CUDA) 🚀" if torch.cuda.is_available() else "CPU — expect slow inference 🐢")
-    )
+        device_msg = (
+            "GPU (CUDA) 🚀"
+            if torch.cuda.is_available()
+            else "CPU — expect slow inference 🐢"
+        )
+    except ModuleNotFoundError:
+        device_msg = "unknown — could not import torch"
+    st.caption(f"Compute device: {device_msg}")
 
     st.divider()
     st.header("🎨 Plotting")
@@ -222,7 +227,7 @@ st.caption(
 
 with st.expander("Events dataframe"):
     cols = [c for c in ("type", "start", "duration", "text") if c in events.columns]
-    st.dataframe(events[cols].head(200), use_container_width=True)
+    st.dataframe(events[cols].head(200), width="stretch")
 
 # Global activity over time
 st.markdown("**Global cortical activity over time**")
